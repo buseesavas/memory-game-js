@@ -20,6 +20,7 @@ body {
 
 .container {
   width: 100%;
+  padding-bottom: 70px;
 }
 
 .game-items {
@@ -41,6 +42,10 @@ body {
   color: transparent;
 }
 
+.game-item:hover {
+  background-color: #405f74;
+}
+
 .game-item img {
   opacity: 0;
 }
@@ -59,6 +64,28 @@ body {
 
 .game-item-focus {
   background-color: #fda214;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.5s ease forwards;
 }
 
 h2 {
@@ -222,6 +249,63 @@ p {
   line-height: 24.8px;
   text-align: right;
   color: #304859;
+}
+
+dialog {
+  width: 100%;
+  padding: 24px;
+  margin-inline: 24px;
+  align-self: center;
+  border-radius: 10px;
+  border: none;
+}
+
+.menuRestartBtn {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: #fcfcfc;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  text-align: center;
+  background-color: #fda214;
+  padding: 12px;
+  border-radius: 26px;
+}
+
+.menuNewGameBtn {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  text-align: center;
+  color: #304859;
+  background-color: #dfe7ec;
+  padding: 12px;
+  border: none;
+  border-radius: 26px;
+  width: 100%;
+}
+
+.resumeBtn {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  text-align: center;
+  color: #304859;
+  background-color: #dfe7ec;
+  padding: 12px;
+  border: none;
+  border-radius: 26px;
+  width: 100%;
+}
+
+.newGameBtn , .menuNewGameBtn {
+  text-decoration: none;
 }
 
 @media (width >= 768px) {

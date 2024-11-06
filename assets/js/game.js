@@ -22,13 +22,32 @@ let zamanAraligi;
 const gameCard = document.querySelector(".game-items");
 const hamleSayisi = document.querySelector(".hamleTxt");
 const zamanlayici = document.querySelector(".zamanlayiciTxt");
+const menuBtn = document.querySelector(".menuBtn");
+const menuDialog = document.querySelector(".menuDialog");
+const resumeBtn = document.querySelector(".resumeBtn");
+
+menuBtn.addEventListener("click", () => {
+  menuDialog.showModal();
+  zamanlayiciyiDurdur();
+});
+
+resumeBtn.addEventListener("click", () => {
+  menuDialog.close();
+  zamanlayiciyiBaslat();
+});
 
 for (const image of data) {
   gameCard.innerHTML += `
-    <li class="game-item" data-image="${image}">
+    <li class="game-item" data-image="${image} draggable="false"">
       <img src="${image}" alt="Card Image">
     </li>`;
 }
+
+document.querySelectorAll(".game-item").forEach(card => {
+  card.addEventListener("dragstart", (e) => {
+    e.preventDefault();  // Bu, kartın sürüklenmesini engeller
+  });
+});
 
 const items = document.querySelectorAll(".game-item");
 
@@ -85,9 +104,11 @@ function kartlariEslestir(img1, img2) {
 
     setTimeout(oyunBitisi, 500);
   } else {
+    firstCard.classList.add("shake");
+    secondCard.classList.add("shake");
     setTimeout(() => {
-      firstCard.classList.remove("game-item-active");
-      secondCard.classList.remove("game-item-active");
+      firstCard.classList.remove("game-item-active", "shake");
+      secondCard.classList.remove("game-item-active", "shake");
 
       firstCard = secondCard = null;
       disable = false;
@@ -137,3 +158,5 @@ items.forEach((item) => {
 
 kartlariGoster();
 kartlariGizle();
+
+
